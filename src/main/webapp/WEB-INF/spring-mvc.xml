@@ -8,9 +8,9 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-	
+
 	<!-- 解决js和css的引用路径问题 -->
-	<mvc:default-servlet-handler/>
+	<mvc:default-servlet-handler />
 	<!-- 激活@controller模式 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<!-- 配置包扫描位置（会在此包下扫描@controller控制器 -->
@@ -21,21 +21,15 @@
 		<property name="prefix">
 			<value>/WEB-INF/jsp/</value>
 		</property>
-		
+
 		<property name="suffix">
 			<value>.jsp</value>
 		</property>
 	</bean>
-	
+
 	<!-- 配置titles模板（没有用到titles可以不用配置此项 -->
-	<!-- <bean id="titlesConfigurer"
-		class="org.springframework.web.servlet.view.titles3.TitleConfigurer">
-		<property name="definitions">
-			<list>
-				<value>/WEB-INF/titles/titles-definitions.xml</value>
-			</list>
-		</property>
-	
-	</bean> -->
+	<!-- <bean id="titlesConfigurer" class="org.springframework.web.servlet.view.titles3.TitleConfigurer"> 
+		<property name="definitions"> <list> <value>/WEB-INF/titles/titles-definitions.xml</value> 
+		</list> </property> </bean> -->
 
 </beans>

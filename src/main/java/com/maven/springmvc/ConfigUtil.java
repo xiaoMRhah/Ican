@@ -10,7 +10,7 @@ public class ConfigUtil {
 	public final static String APP_SECRECT="";//服务号的appSecrect
 	public final static String TOKEN="";//服务号的配置token
 	public final static String MCH_ID="";//开通微信支付分配的商户号
-	public final static String API_KEy="";//商户API密钥 自行去商户平台设置
+	public final static String API_KEY="";//商户API密钥 自行去商户平台设置
 	public final static String SIGN_TYPE="";//签名加密方式
 	//微信支付统一接口的回调action
 	public final static String NOTIFY_URL="";//用于告知微信服务器 调用成功
