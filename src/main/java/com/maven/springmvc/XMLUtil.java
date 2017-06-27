@@ -25,7 +25,8 @@ public class XMLUtil {
 	 * @throws IOException
 	 */
 	public static Map<String, String> doXMLParse(String strxml) throws JDOMException,IOException{
-		strxml=strxml.replaceFirst("encoding=\".*\"  ", "encoding=\" UTF-8\"  ");
+		strxml=strxml.replaceFirst("encoding=\" .*\"  ", "encoding=\" UTF-8\"  ");
+		System.err.println(strxml);
 		if(null==strxml||"".equals(strxml)){
 			return null;
 		}
@@ -36,8 +37,8 @@ public class XMLUtil {
 		SAXBuilder builder=new SAXBuilder();
 		Document doc=(Document) builder.build(in);
 		Element root=doc.getRootElement();
-		List<?> list=root.getChildren();
-		Iterator<?> it=list.iterator();
+		List list=root.getChildren();
+		Iterator it=list.iterator();
 		while(it.hasNext()){
 			Element e=(Element)it.next();
 			String k=e.getName();

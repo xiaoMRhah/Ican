@@ -9,7 +9,6 @@ import java.util.TreeMap;
 import javax.servlet.http.HttpServletRequest;
 
 public class WxPayUtil {
-	@SuppressWarnings("unchecked")
 	public static String unifiedorder(String body,String out_trade_no,String openid) throws IOException
 	{
 		SortedMap<Object,Object> parameters=new TreeMap<Object,Object>();
@@ -18,7 +17,7 @@ public class WxPayUtil {
 		parameters.put("nonce_str", payConmmonUtil.CreateNoncestr());
 		parameters.put("body", body);
 		parameters.put("out_trade_no", out_trade_no);
-		parameters.put("total_free", 1);
+		parameters.put("total_free", 0.01);
 		parameters.put("spbill_create_ip", "192.168.106.112");
 		parameters.put("notify_url", ConfigUtil.NOTIFY_URL);
 		parameters.put("trade_type", "JSAPI");
@@ -39,26 +38,4 @@ public class WxPayUtil {
 		return map.get("prepay_id").toString();		
 	}
 	
-	/*public static String getIp(HttpServletRequest request){
-		String remoteAddr=request.getRemoteAddr();
-		String forworded=request.getHeader("X-Forwarded-For");
-		String realIp=request.getHeader("X-Real-IP");
-		
-		String ip=null;
-		if(realIp==null){
-			if(forworded==null){
-				ip=remoteAddr;
-			}else{
-				ip=remoteAddr+"/"+forworded;
-			}
-		}else{
-			if(realIp.equals(forworded)){
-				ip=realIp;
-			}else{
-				ip=realIp+"/"+forworded.replaceAll(","+realIp, "");
-			}
-		}
-		
-		return ip;		
-	}*/
 }

@@ -2,6 +2,7 @@ package com.maven.springmvc;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
 import java.util.SortedMap;
@@ -48,12 +49,13 @@ public class payConmmonUtil {
 	 */
 	public static String CreateNoncestr(){
 		String chars="abcdefghihklmnopqrstuvwyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		String res="";
+		Random rd=new Random();
+		StringBuffer sb=new StringBuffer();
 		for(int i=0;i<16;i++){
-			Random rd=new Random();
-			res +=chars.indexOf(rd.nextInt(chars.length()-1));
+			int number = rd.nextInt(chars.length());
+			sb.append(chars.charAt(number));
 		}
-		return res;
+		return sb.toString();
 	}
 	
 	
@@ -64,9 +66,10 @@ public class payConmmonUtil {
 	 * @param parameters 请求参数
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	public static String createSign(SortedMap<Object,Object> parameters){
 		StringBuffer sb=new StringBuffer();
-		Set es=parameters.entrySet();
+		Set<Entry<Object, Object>> es=parameters.entrySet();
 		Iterator it=es.iterator();
 		while(it.hasNext()){
 			Map.Entry entry=(Map.Entry)it.next();
