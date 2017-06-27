@@ -3,6 +3,7 @@ package com.maven.springmvc;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.ConnectException;
 import java.net.URL;
 
@@ -10,16 +11,13 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 
-import org.apache.log4j.Logger;
-import org.omg.CORBA.portable.OutputStream;
-import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.SSLSocketFactory;
 /** 
  * 通用工具类
  */
 public class CommonUtil {
-	private static Logger log=(Logger) LoggerFactory.getLogger(CommonUtil.class);
+	/*private static Logger log=LoggerFactory.getLogger(CommonUtil.class);*/
 	/**
 	 * 发送https请求地址
 	 * @param requestUrl请求地址
@@ -47,7 +45,7 @@ public class CommonUtil {
 			conn.setRequestProperty("content-type", "application/x-www-form-urlencoded");
 			//当outputStr不为null时向输出流写数据
 			if(null!=outputStr){
-				OutputStream outputStream=(OutputStream) conn.getOutputStream();
+				OutputStream outputStream=conn.getOutputStream();
 				//注意编码格式
 				outputStream.write(outputStr.getBytes("UTF-8"));
 				outputStream.close();
@@ -70,9 +68,9 @@ public class CommonUtil {
 			conn.disconnect();
 			return buffer.toString();
 		} catch (ConnectException e) {
-			log.error("连接超时：{}",e);
+			System.out.println("连接超时：{}");
 		}catch (Exception e) {
-			log.error("https请求异常：{}",e);
+			System.out.println("https请求异常：{}");
 		}
 		
 		return null;

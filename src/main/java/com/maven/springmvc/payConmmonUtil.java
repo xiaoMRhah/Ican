@@ -93,8 +93,8 @@ public class payConmmonUtil {
 		Iterator it=es.iterator();
 		while(it.hasNext()){
 			Map.Entry entry=(Map.Entry)it.next();
-			String k=(String)entry.getKey();
-			String v=(String)entry.getValue();
+			String k=entry.getKey().toString();
+			String v=entry.getValue().toString();
 			if("attach".equalsIgnoreCase(k)||"body".equalsIgnoreCase(k)||"sign".equalsIgnoreCase(k)){
 				sb.append("<"+k+">"+"<![CDATA["+v+"]]></"+k+">");
 			}else{

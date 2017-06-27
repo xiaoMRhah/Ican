@@ -29,13 +29,16 @@ public class PayController {
 		model.addAttribute("message", "Hello World!!!");
 		return "wxpay";
 	}*/
+	
+	
 	@RequestMapping(value="/wxpay",method=RequestMethod.GET)
-	public String couponsConfirm(Model m,@RequestParam("openid")String openid,
-			@RequestParam("orderNo")String orderNo) throws IOException{
+	public String couponsConfirm(Model m) throws IOException{
 		
 		//openid可通过微信高级接口oath2.0网页授权接口获取到用户信息
-		m.addAttribute("openid",openid);
+		/*m.addAttribute("openid",openid);*/
+		String openid="ohZ_m009HuTIRH5g6KaZRnfRACcg";
 		//orderNo是你的商品订单号，自行生成的随机订单号，但要保证随机性，不能有重复订单号。
+		String orderNo="123456";
 		m.addAttribute("orderNo",orderNo);
 		
 		String timeStamp=payConmmonUtil.create_timestamp();
